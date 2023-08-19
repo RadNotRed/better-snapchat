@@ -3,6 +3,7 @@ import { Modal, Button, Text } from '@nextui-org/react';
 import AllowScreenshot from './AllowScreenshot';
 import PreventTypingNotification from './PreventTyping';
 import SaveImage from './SaveImage';
+import PreventPresenceNotification from './PreventPresenceNotification';
 import styles from './Modal.module.css';
 
 export default function App({ visible, closeHandler }: { visible: boolean; closeHandler: () => void }) {
@@ -17,6 +18,7 @@ export default function App({ visible, closeHandler }: { visible: boolean; close
         <div className={styles.checkboxColumn}>
           <AllowScreenshot />
           <PreventTypingNotification />
+          <PreventPresenceNotification />
           <SaveImage />
         </div>
       </Modal.Body>

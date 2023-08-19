@@ -38,7 +38,7 @@ const fs = require('fs/promises');
         run_at: 'document_start',
       },
     ],
-    permissions: ['declarativeNetRequest'],
+    permissions: ['declarativeNetRequest', 'tabs', 'activeTab'],
     host_permissions: ['https://web.snapchat.com/*'],
   };
 
