@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import SaveButton from './components/Button';
 import settings from '../../lib/settings';
 import { EventTypes, SettingIds } from '../../../common/constants';
@@ -7,7 +7,7 @@ import dom from '../../observers/dom';
 
 const CLOSE_BUTTON_SELECTOR = '[title="Close"]';
 
-let mountedButtonNode: any = null;
+let mountedButtonRoot: any = null;
 
 class SaveImage {
   constructor() {
@@ -18,9 +18,9 @@ class SaveImage {
 
   load() {
     if (!settings.getSetting(SettingIds.SAVE_IMAGE_BUTTON)) {
-      if (mountedButtonNode != null) {
-        ReactDOM.unmountComponentAtNode(mountedButtonNode);
-        mountedButtonNode = null;
+      if (mountedButtonRoot != null) {
+        mountedButtonRoot.unmount();
+        mountedButtonRoot = null;
       }
 
       return;
@@ -31,9 +31,9 @@ class SaveImage {
       return;
     }
 
-    if (mountedButtonNode != null) {
-      ReactDOM.unmountComponentAtNode(mountedButtonNode);
-      mountedButtonNode = null;
+    if (mountedButtonRoot != null) {
+      mountedButtonRoot.unmount();
+      mountedButtonRoot = null;
     }
 
     const imageContainer = node.parentNode as Element;
@@ -44,8 +44,8 @@ class SaveImage {
     const contentContainer = document.createElement('div');
     contentContainer.setAttribute('id', 'saveImageButton');
     imageContainer?.prepend(contentContainer);
-    mountedButtonNode = contentContainer;
-    ReactDOM.render(<SaveButton parentNode={imageContainer} />, contentContainer);
+    mountedButtonRoot = createRoot(contentContainer);
+    mountedButtonRoot.render(<SaveButton parentNode={imageContainer} />);
   }
 }
 

@@ -1,9 +1,8 @@
-import EventEmitter from 'eventemitter3';
+import { EventEmitter } from 'eventemitter3';
 import { DefaultSettingValues, EventTypes, SettingIds } from '../../common/constants';
 import storage from './storage';
 
 class Settings extends EventEmitter {
-  [x: string]: any;
   settings: Map<string, boolean>;
 
   constructor() {

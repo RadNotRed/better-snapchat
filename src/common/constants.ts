@@ -16,6 +16,7 @@ export const DefaultSettingValues = {
   [SettingIds.ALLOW_SCREENSHOT]: true,
   [SettingIds.PREVENT_TYPING_NOTIFICATION]: false,
   [SettingIds.SAVE_IMAGE_BUTTON]: true,
+  [SettingIds.YOU_ARE_NO_LONGER_PRESENT_NOTIFICATION]: false,
 };
 
 export const EventTypes = {

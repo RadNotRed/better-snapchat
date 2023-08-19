@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import ModalButton from './components/Button';
 import dom from '../../observers/dom';
 
 const CLOSE_BUTTON_SELECTOR = '[title="Close Chat"]';
 
-let mountedButtonNode: any = null;
+let mountedButtonRoot: any = null;
 
 class SettingsMenu {
   constructor() {
@@ -20,8 +20,8 @@ class SettingsMenu {
       return;
     }
 
-    if (mountedButtonNode != null) {
-      ReactDOM.unmountComponentAtNode(mountedButtonNode);
+    if (mountedButtonRoot != null) {
+      mountedButtonRoot.unmount();
     }
 
     const buttonsContainer = node.parentNode;
@@ -29,9 +29,9 @@ class SettingsMenu {
     contentContainer.setAttribute('id', 'modalOpenButton');
     buttonsContainer?.append(contentContainer);
 
-    mountedButtonNode = contentContainer;
+    mountedButtonRoot = createRoot(contentContainer);
 
-    ReactDOM.render(<ModalButton />, contentContainer);
+    mountedButtonRoot.render(<ModalButton />);
   }
 }
 
