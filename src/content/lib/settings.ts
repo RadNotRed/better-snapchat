@@ -3,6 +3,7 @@ import { DefaultSettingValues, EventTypes, SettingIds } from '../../common/const
 import storage from './storage';
 
 class Settings extends EventEmitter {
+  [x: string]: any;
   settings: Map<string, boolean>;
 
   constructor() {
